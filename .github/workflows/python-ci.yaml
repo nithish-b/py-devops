@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-test:
+  lint-static-checks:
     runs-on: ubuntu-latest
     steps:
       - name: Check Out Repo
@@ -36,3 +36,35 @@ jobs:
 
       - name: Security Check
         run: uv run bandit -c pyproject.toml -r .
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.9', '3.10', '3.13']
+    steps:
+      - name: Check Out Repo
+        uses: actions/checkout@v7
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v9.0.0
+        with:
+          enable-cache: true
+
+      - name: Set Up Python
+        run: uv python install
+
+      - name: Install Dependencies
+        run: uv sync --extra dev --locked
+
+      - name: Pytest
+        run: |
+          pytest
+  release:
+    runs-on: ubuntu-latest
+    needs:
+      - lint-static-checks
+      - tests
+    steps:
+      - name: Release
+        run: echo "Release"
