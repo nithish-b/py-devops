@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.2.1 (2026-08-11)
+
+### Bug Fixes
+
+- **python-cicd**: Release and publish
+  ([`0628e9d`](https://github.com/nithish-b/py-devops/commit/0628e9deabb9c82f8c3fe99e667f9e92c286309a))
+
+
 ## v1.2.0 (2026-08-11)
 
 ### Features
