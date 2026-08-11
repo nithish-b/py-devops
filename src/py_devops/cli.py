@@ -1,9 +1,12 @@
 import logging
+
 import click
+
 from .checker import check_urls
 
 logging.basicConfig(
-    level=logging.INFO, format="[%(asctime)s] %(levelname)-8s %(name)s: %(message)s"
+    level=logging.INFO,
+    format="[%(asctime)s] %(levelname)-8s %(name)s: %(message)s",
 )
 
 logger = logging.getLogger(__name__)
@@ -20,7 +23,7 @@ def main(urls, timeout, verbose):
     logger.debug(f"Recievd urls: {timeout}")
     logger.debug(f"Recievd urls: {verbose}")
     if not urls:
-        logging.warning("No URLs provided to check")
+        logger.warning("No URLs provided to check")
         click.echo("Usage: check-urls <URL1> <URL2>")
     logger.info(f"Starting check for {len(urls)} URLs")
 

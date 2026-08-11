@@ -1,6 +1,7 @@
 import logging
+from collections.abc import Collection
+
 import requests
-from typing import Collection
 
 logger = logging.getLogger(__name__)
 
@@ -16,7 +17,9 @@ def check_urls(urls: Collection[str], timeout: int = 5) -> dict[str, str]:
     Returns:
         A dictionary mapping each URL to its status string.
     """
-    logger.info(f"Starting check for {len(urls)} URLs with a timeour of {timeout} ")
+    logger.info(
+        f"Starting check for {len(urls)} URLs with a timeour of {timeout} "
+    )
     results = {}
     for url in urls:
         status = "UNKNOWN"
@@ -38,7 +41,8 @@ def check_urls(urls: Collection[str], timeout: int = 5) -> dict[str, str]:
         except requests.exceptions.RequestException as e:
             status = "REQUEST_ERROR"
             logger.warning(
-                f"An unexpected request error occured for {url}: {e}", exc_info=True
+                f"An unexpected request error occured for {url}: {e}",
+                exc_info=True,
             )
         results[url] = status
         logger.debug(f"Checked: {url:<40} -> {status}")
