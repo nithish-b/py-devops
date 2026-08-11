@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check Out Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@v9.0.0
         with:
           enable-cache: true
 
@@ -30,3 +30,9 @@ jobs:
 
       - name: Format Check
         run: uv run ruff format --check .
+
+      - name: Staic Type Check
+        run: uv run mypy src/
+
+      - name: Security Check
+        run: uv run bandit -c pyproject.toml -r .
