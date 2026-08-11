@@ -2,6 +2,20 @@
 
 <!-- version list -->
 
+## v1.1.0 (2026-08-11)
+
+### Features
+
+- **python-cicd**: Add publishing workflow
+  ([`f1721d3`](https://github.com/nithish-b/py-devops/commit/f1721d3043efe7666eceba98906032d2ad7f0b44))
+
+- **python-cicd**: Add publishing workflow
+  ([`937f460`](https://github.com/nithish-b/py-devops/commit/937f4605f29b35a42e7ec9d05517887d3008c852))
+
+- **python-cicd**: Release and publish
+  ([`ffcde7c`](https://github.com/nithish-b/py-devops/commit/ffcde7cbc7a2ee503f06f8c81b74d0361e4f8755))
+
+
 ## v1.0.0 (2026-08-11)
 
 ### Continuous Integration
