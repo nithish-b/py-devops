@@ -1,4 +1,4 @@
-name: CI/CD for simple http checker
+name: build
 
 on:
   push:
