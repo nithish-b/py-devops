@@ -81,12 +81,9 @@ jobs:
         with:
           enable-cache: true
 
-      - name: Install dependencies
-        run: uv pip install python-semantic-release
-
       - name: Create Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          uv run semantic-release version
-          uv run semantic-release publish
+          uvx --from python-semantic-release==10.6.1 semantic-release version
+          uvx --from python-semantic-release==10.6.1 semantic-release publish
