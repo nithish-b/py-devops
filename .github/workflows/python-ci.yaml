@@ -62,11 +62,25 @@ jobs:
       - name: Pytest
         run: |
           uv run pytest
-  release:
+  build-upload:
     runs-on: ubuntu-latest
     needs:
       - lint-static-checks
       - tests
     steps:
-      - name: Release
-        run: echo "Release"
+      - name: Check Out Repo
+        uses: actions/checkout@v7
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v9.0.0
+        with:
+          enable-cache: true
+
+      - name: Build Release
+        run: uv build
+
+      - name: Upload build Artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: py-devops-${{ github.sha }}
+          path: dist/
